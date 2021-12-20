@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ThemeContext } from "./App";
 
 export default function CounterFunctional({
   initialCount,
@@ -6,13 +7,22 @@ export default function CounterFunctional({
   initialCount: number;
 }) {
   const [count, setCount] = useState(initialCount);
+  const theme = useContext(ThemeContext);
   return (
     <div>
-      <button type="button" onClick={() => setCount((c) => c - 1)}>
+      <button
+        style={theme}
+        type="button"
+        onClick={() => setCount((c) => c - 1)}
+      >
         -
       </button>
       <span>{count}</span>
-      <button type="button" onClick={() => setCount((c) => c + 1)}>
+      <button
+        style={theme}
+        type="button"
+        onClick={() => setCount((c) => c + 1)}
+      >
         +
       </button>
     </div>

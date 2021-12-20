@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { ThemeContext } from "./App";
 
 interface Props {
   initialCount: number;
@@ -23,17 +24,28 @@ export default class Counter extends Component<Props, State> {
 
   render() {
     const { count } = this.state;
-
     return (
-      <div>
-        <button type="button" onClick={() => this.changeCount(-1)}>
-          -
-        </button>
-        <span>{count}</span>
-        <button type="button" onClick={() => this.changeCount(+1)}>
-          +
-        </button>
-      </div>
+      <ThemeContext.Consumer>
+        {(style) => (
+          <div>
+            <button
+              style={style}
+              type="button"
+              onClick={() => this.changeCount(-1)}
+            >
+              -
+            </button>
+            <span>{count}</span>
+            <button
+              style={style}
+              type="button"
+              onClick={() => this.changeCount(+1)}
+            >
+              +
+            </button>
+          </div>
+        )}
+      </ThemeContext.Consumer>
     );
   }
 }
