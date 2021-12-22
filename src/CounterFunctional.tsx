@@ -1,11 +1,12 @@
 import { useState, useContext } from "react";
 import { ThemeContext } from "./App";
 
-export default function CounterFunctional({
-  initialCount,
-}: {
+interface Props {
   initialCount: number;
-}) {
+}
+
+export default function CounterFunctional(props: Props) {
+  const { initialCount } = props;
   const [count, setCount] = useState(initialCount);
   const theme = useContext(ThemeContext);
   return (
